@@ -1,0 +1,25 @@
+{
+  "name": "my-react-boilerplate",
+  "version": "0.0.1",
+  "description": "React Boilerplate w/ nodejs, coffeescript, stylus, mongodb and some other stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xouabita/my-react-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "stylus",
+    "boilerplate",
+    "nodejs"
+  ],
+  "author": "xouabita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xouabita/my-react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/xouabita/my-react-boilerplate#readme"
+}
