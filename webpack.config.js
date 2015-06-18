@@ -1,3 +1,5 @@
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 var backendConfig = {
   entry: "./server.coffee",
   target: "node",
@@ -37,10 +39,13 @@ var webConfig = {
       },
       {
         test: /\.styl$/,
-        loader: 'style!css!stylus'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin("styles.css")
+  ]
 }
 
 module.exports = [backendConfig, webConfig];
