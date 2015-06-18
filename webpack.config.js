@@ -1,5 +1,8 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+// Stylus plugins
+var nib = require("nib");
+
 var backendConfig = {
   entry: "./server.coffee",
   target: "node",
@@ -41,6 +44,11 @@ var webConfig = {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
       }
+    ]
+  },
+  stylus: {
+    use: [
+      nib()
     ]
   },
   plugins: [
