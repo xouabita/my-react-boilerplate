@@ -17,3 +17,9 @@ require 'bootstrap-styl/js/scrollspy'
 require 'bootstrap-styl/js/tab'
 require 'bootstrap-styl/js/tooltip'
 require 'bootstrap-styl/js/transition'
+
+React  = require('react')
+Router = require('react-router')
+
+Router.run routes, Router.HistoryLocation, (Handler) ->
+  React.render <Handler />, document.getElementById('main')
