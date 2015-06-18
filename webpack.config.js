@@ -18,7 +18,7 @@ var backendConfig = {
     loaders: [
       {
         test: /\.coffee$/,
-        loader: 'coffee-loader',
+        loader: 'coffee!cjsx',
         exclude: "node_modules"
       }
     ]
