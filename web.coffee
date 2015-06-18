@@ -2,8 +2,8 @@
 # Requirements
 # ~~~~~~~~~~~~~~~~~~~~~
 
-require "./assets/styles/main.styl"
 require "bootstrap-styl/bootstrap/index.styl"
+require "./assets/styles/main.styl"
 
 require 'bootstrap-styl/js/affix'
 require 'bootstrap-styl/js/alert'

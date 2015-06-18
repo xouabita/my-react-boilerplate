@@ -2,6 +2,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Stylus plugins
 var nib = require("nib");
+var rupture = require("rupture");
 
 var backendConfig = {
   entry: "./server.coffee",
@@ -56,7 +57,8 @@ var webConfig = {
   },
   stylus: {
     use: [
-      nib()
+      nib(),
+      rupture()
     ]
   },
   plugins: [
