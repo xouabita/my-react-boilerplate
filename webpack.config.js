@@ -43,6 +43,14 @@ var webConfig = {
       {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
+      },
+      {
+        test: /\.(ttf|eot|svg|woff)$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.woff2?$/,
+        loader: 'url-loader?limit=10000&minetype=application/font-woff'
       }
     ]
   },
