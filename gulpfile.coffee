@@ -8,7 +8,7 @@ gulp.task "webpack", (done) ->
 gulp.task "nodemon", ->
   nodemon
     script: '__build__/server.js'
-    ext: 'coffee html'
+    ext: 'coffee html styl'
     tasks: ['webpack']
 
 gulp.task "default", ["webpack", "nodemon"]
