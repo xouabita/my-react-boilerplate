@@ -1,7 +1,8 @@
 # Node modules
-express  = require 'express'
-mongoose = require 'mongoose'
-passport = require 'passport'
+express    = require 'express'
+mongoose   = require 'mongoose'
+passport   = require 'passport'
+bodyParser = require 'body-parser'
 
 # React stuff
 React  = require 'react'
@@ -18,6 +19,7 @@ app.set 'view engine', 'html'
 
 app.use passport.initialize()
 app.use passport.session()
+app.use bodyParser()
 
 User     = require './models/User.coffee'
 passport.use new LocalStrategy(User.authenticate())
@@ -27,6 +29,11 @@ passport.deserializeUser User.deserializeUser()
 mongoose.connect 'mongodb://localhost/my_react_boilerplate'
 
 app.use '/static', express.static './__build__/public/'
+
+# Routes managed by express and not by react-router
+app.post '/register', (req, res) ->
+  console.log req.body
+  res.send "lol"
 
 # Routes managed by react-router
 routes = require './Routes.coffee'
