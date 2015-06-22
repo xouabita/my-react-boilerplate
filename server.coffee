@@ -1,8 +1,9 @@
 # Node modules
-express    = require 'express'
-mongoose   = require 'mongoose'
-passport   = require 'passport'
-bodyParser = require 'body-parser'
+express      = require 'express'
+mongoose     = require 'mongoose'
+passport     = require 'passport'
+bodyParser   = require 'body-parser'
+session      = require 'express-session'
 
 # React stuff
 React  = require 'react'
@@ -17,11 +18,13 @@ app.set 'views', "./views/"
 app.engine 'html', require('ejs').renderFile
 app.set 'view engine', 'html'
 
+app.use bodyParser()
+app.use session secret: 'my react boilerplate'
+
 app.use passport.initialize()
 app.use passport.session()
-app.use bodyParser()
 
-User     = require './models/User.coffee'
+User = require './models/User.coffee'
 passport.use new LocalStrategy(User.authenticate())
 passport.serializeUser User.serializeUser()
 passport.deserializeUser User.deserializeUser()
@@ -32,8 +35,18 @@ app.use '/static', express.static './__build__/public/'
 
 # Routes managed by express and not by react-router
 app.post '/register', (req, res) ->
-  console.log req.body
-  res.send "lol"
+  User.register new User(username: req.body.username)
+  , req.body.password
+  , (err, user) ->
+      if err then console.log err;res.redirect '/register'
+      passport.authenticate('local') req, res, -> res.redirect '/test-login'
+
+app.post '/login', passport.authenticate('local'), (req, res) ->
+  res.redirect '/test-login'
+
+app.get '/logout', (req, res) ->
+  req.logout()
+  res.redirect '/test-login'
 
 # Routes managed by react-router
 routes = require './Routes.coffee'
@@ -42,7 +55,12 @@ app.use (req, res, next) ->
     location: req.url
     routes: routes
   router.run (Handler, state) ->
-    res.render 'base.html', react: React.renderToString <Handler />
+    html = undefined
+    if req.user
+      html = React.renderToString <Handler user={req.user} />
+    else
+      html = React.renderToString <Handler />
+    res.render 'base.html', react: html
 
 app.listen 4242, ->
   console.log "Your app is now running on port 4242"
