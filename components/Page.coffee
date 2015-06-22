@@ -22,6 +22,7 @@ module.exports = React.createClass
           <Nav bsStyle="pills" pullRight>
             <NavItemLink to="/">Home</NavItemLink>
             <NavItemLink to="/hello/xou">Hello xou !</NavItemLink>
+            <NavItemLink to="/test-login">Test Login</NavItemLink>
           </Nav>
           <h3>My React Boilerplate</h3>
         </div>
