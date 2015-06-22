@@ -1,4 +1,9 @@
-React = require 'react'
+React     = require 'react'
+BackAlpha = require '../components/BackAlpha.coffee'
+Page = require '../components/Page.coffee'
 
 module.exports = React.createClass
-  render: -> <p>Hello, {this.props.params.name}</p>
+  render: ->
+    <Page>
+      <p>Hello, {this.props.params.name}</p>
+    </Page>

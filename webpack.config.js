@@ -46,7 +46,7 @@ var webConfig = {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
       },
       {
-        test: /\.(ttf|eot|svg|woff)$/,
+        test: /\.(ttf|eot|svg|woff|gif)$/,
         loader: 'file-loader'
       },
       {
