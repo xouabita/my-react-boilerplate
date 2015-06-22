@@ -5,11 +5,11 @@ nodemon = require "gulp-nodemon"
 gulp.task "webpack", (done) ->
   webpack(require "./webpack.config.js").run (err, stats) -> done()
 
-gulp.task "nodemon", ->
+gulp.task "nodemon", ["webpack"], ->
   nodemon
     script: '__build__/server.js'
     ext: 'coffee html styl'
     tasks: ['webpack']
 
-gulp.task "default", ["webpack", "nodemon"]
+gulp.task "default", ["nodemon"]
 
