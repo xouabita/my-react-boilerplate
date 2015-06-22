@@ -3,6 +3,7 @@ express      = require 'express'
 mongoose     = require 'mongoose'
 passport     = require 'passport'
 bodyParser   = require 'body-parser'
+cookieParser = require 'cookie-parser'
 session      = require 'express-session'
 
 # React stuff
@@ -20,6 +21,7 @@ app.set 'view engine', 'html'
 
 app.use bodyParser()
 app.use session secret: 'my react boilerplate'
+app.use cookieParser()
 
 app.use passport.initialize()
 app.use passport.session()
