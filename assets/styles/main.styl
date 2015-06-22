@@ -1,5 +1,16 @@
-global-reset()
+@import _page
 
 body
-  +below(800px)
-    background blue
+  background url('../imgs/bg.gif') no-repeat center center fixed
+  background-size cover
+  padding 20px 0
+
+  .container
+    background rgba(255, 255, 255, 0.7)
+    min-height calc(100vh - 40px)
+
+    .header
+      margin-bottom 30px
+      padding-bottom 10px
+      padding-top 10px
+      border-bottom 1px solid #e5e5e5
