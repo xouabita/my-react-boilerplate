@@ -1,6 +1,6 @@
 {
   "name": "my-react-boilerplate",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "React Boilerplate w/ nodejs, coffeescript, stylus, mongodb and some other stuff",
   "main": "index.js",
   "scripts": {
