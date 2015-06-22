@@ -1,7 +1,6 @@
 React  = require 'react'
 Router = require 'react-router'
-Route = Router.Route
-DefaultRoute = Router.DefaultRoute
+{ Route, DefaultRoute } = Router
 
 # Views
 Index = require './views/Index.coffee'
