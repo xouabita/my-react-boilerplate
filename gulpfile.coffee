@@ -3,7 +3,7 @@ webpack = require "webpack"
 nodemon = require "gulp-nodemon"
 
 gulp.task "webpack", (done) ->
-  webpack(require "./webpack.config.js").run (err, stats) -> done()
+  webpack(require "./webpack.config.coffee").run (err, stats) -> done()
 
 gulp.task "nodemon", ["webpack"], ->
   nodemon
