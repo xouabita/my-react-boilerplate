@@ -1,4 +1,6 @@
 ExtractTextPlugin = require "extract-text-webpack-plugin"
+{ HotModuleReplacementPlugin } = require 'webpack'
+
 
 # Stylus plugins
 nib     = require "nib"
@@ -22,9 +24,10 @@ backendConfig =
     ]
 
 frontendConfig =
-  entry: "./web.coffee"
+  entry: ["./web.coffee", "webpack/hot/dev-server"]
   output:
-    path: "__build__/public/"
+    path: __dirname + "/__build__/public/"
+    publicPath: "http://localhost:4243/"
     filename: "app.js"
   resolve:
     moduleDirectories: ['node_modules']
@@ -35,7 +38,7 @@ frontendConfig =
         exclude: "node_modules"
       ,
         test: /\.styl$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
+        loader: 'style!css!stylus'
       ,
         test: /\.(ttf|eot|svg|woff|gif)$/,
         loader: 'file-loader'
@@ -49,7 +52,7 @@ frontendConfig =
       rupture()
     ]
   plugins: [
-    new ExtractTextPlugin("styles.css")
+    new HotModuleReplacementPlugin()
   ]
 
 module.exports =

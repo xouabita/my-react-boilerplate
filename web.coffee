@@ -3,7 +3,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~
 
 require "bootstrap-styl/bootstrap/index.styl"
-require "./assets/styles/main.styl"
+style = require "./assets/styles/main.styl"
 
 window.jQuery = window.$ = require 'jquery'
 
