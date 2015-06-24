@@ -2,14 +2,19 @@ gulp    = require "gulp"
 webpack = require "webpack"
 nodemon = require "gulp-nodemon"
 
-gulp.task "webpack", (done) ->
-  webpack(require "./webpack.config.coffee").run (err, stats) -> done()
+{ frontendConfig, backendConfig } = require './webpack.config.coffee'
 
-gulp.task "nodemon", ["webpack"], ->
+gulp.task "webpack-backend", (done) ->
+  webpack(backendConfig).run (err, stats) -> done()
+
+gulp.task "webpack-frontend", ->
+  webpack(frontendConfig).watch {}, ->
+
+gulp.task "nodemon", ["webpack-backend"], ->
   nodemon
     script: '__build__/server.js'
-    ext: 'coffee html styl'
-    tasks: ['webpack']
+    ext: 'coffee'
+    tasks: ['webpack-backend']
 
-gulp.task "default", ["nodemon"]
+gulp.task "default", ["nodemon", "webpack-frontend"]
 

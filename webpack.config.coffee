@@ -52,6 +52,6 @@ frontendConfig =
     new ExtractTextPlugin("styles.css")
   ]
 
-module.exports = [ frontendConfig, backendConfig ]
-#   frontendConfig: frontendConfig
-#   backendConfig: backendConfig
+module.exports =
+  frontendConfig: frontendConfig
+  backendConfig: backendConfig
