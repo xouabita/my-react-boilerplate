@@ -1,3 +1,4 @@
 node_modules
 *.swp
 __build__/
+.DS_Store
