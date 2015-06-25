@@ -34,7 +34,7 @@ frontendConfig =
   module:
     loaders: [
         test: /\.coffee$/,
-        loader: 'coffee!cjsx',
+        loader: 'react-hot!coffee!cjsx',
         exclude: "node_modules"
       ,
         test: /\.styl$/,
