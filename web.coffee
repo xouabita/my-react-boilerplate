@@ -25,5 +25,7 @@ Router = require('react-router')
 
 routes = require './Routes.coffee'
 
+initialState = JSON.parse document.getElementById('initial-state').innerHTML
+
 Router.run routes, Router.HistoryLocation, (Handler) ->
-  React.render <Handler />, document.body
+  React.render <Handler initialState={initialState} />, document.body

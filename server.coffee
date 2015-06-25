@@ -19,7 +19,8 @@ app.set 'views', "./views/"
 app.engine 'html', require('ejs').renderFile
 app.set 'view engine', 'html'
 
-app.use bodyParser()
+app.use bodyParser.json()
+app.use bodyParser.urlencoded extended: yes
 app.use session secret: 'my react boilerplate'
 app.use cookieParser()
 
@@ -57,12 +58,12 @@ app.use (req, res, next) ->
     location: req.url
     routes: routes
   router.run (Handler, state) ->
-    html = undefined
-    if req.user
-      html = React.renderToString <Handler user={req.user} />
-    else
-      html = React.renderToString <Handler />
-    res.render 'base.html', react: html
+    initialState = {}
+    if req.user then initialState['user'] = req.user
+    html = React.renderToString <Handler initialState={initialState} />
+    res.render 'base.html',
+      react: html
+      state: JSON.stringify initialState
 
 app.listen 4242, ->
   console.log "Your app is now running on port 4242"

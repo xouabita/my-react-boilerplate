@@ -1,16 +1,18 @@
 React           = require 'react'
 Page            = require '../components/Page.coffee'
 Router          = require 'react-router'
+Bootstrap       = require 'react-bootstrap'
 RouterBootstrap = require 'react-router-bootstrap'
 
+{ Button     } = Bootstrap
 { ButtonLink } = RouterBootstrap
 
 module.exports = React.createClass
   render: ->
-    if this.props.user
+    if this.props.initialState.user
       <Page>
-        <p>You are logged as <i>{this.props.user.username}</i>. Congratulation !</p>
-        <ButtonLink to="/logout" bsStyle="danger">Logout</ButtonLink>
+        <p>You are logged as <i>{this.props.initialState.user.username}</i>. Congratulation !</p>
+        <Button href="/logout" bsStyle="danger">Logout</Button>
       </Page>
     else
       <Page>
