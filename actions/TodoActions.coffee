@@ -1,4 +1,4 @@
-TodoStore     = require '../stores/TodoStore.coffee'
+AppDispatcher = require '../AppDispatcher.coffee'
 TodoConstants = require '../constants/TodoConstants.coffee'
 
 TodoActions =
