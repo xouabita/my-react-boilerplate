@@ -1,9 +1,9 @@
-AppDispatcher    = require './AppDispatcher.coffee'
+AppDispatcher    = require '../AppDispatcher.coffee'
 { EventEmitter } = require 'events'
 assign           = require 'object-assign'
 
-CHANGE_EVENT = 'change'
-TodoConstants = '../constants/TodoConstants.coffee'
+CHANGE_EVENT  = 'change'
+TodoConstants = require '../constants/TodoConstants.coffee'
 
 _todos = {}
 
