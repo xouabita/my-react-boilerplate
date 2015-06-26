@@ -11,6 +11,7 @@ module.exports = React.createClass
     id: PropTypes.string
     placeholder: PropTypes.string
     value: PropTypes.string
+    onSave: PropTypes.func.isRequired
 
   getInitialState: ->
     value: @props.value || ''
@@ -20,5 +21,16 @@ module.exports = React.createClass
       className={@props.className}
       id={@props.id}
       placeholder={@props.placeholder}
+      onBlur={this._save}
+      onChange={this._onChange}
+      onKeyDown={this._onKeyDown}
     />
 
+  _save: ->
+    @props.onSave @state.value
+    @setState value: ''
+
+  _onChange: (e) -> @setState value: e.target.value
+
+  _onKeyDown: (e) ->
+    @_save() if e.keyCode is ENTER_KEY_CODE

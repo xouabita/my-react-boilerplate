@@ -5,9 +5,8 @@ React = require 'react'
 
 module.exports = React.createClass
 
-  PropTypes:
-    todo: PropTypes.object.isRequired
-    key: PropTypes.string.isRequired
+  propTypes:
+   todo: PropTypes.object.isRequired
 
   render: ->
     <li key={@props.key} className='todo-item col-xs-12'>
