@@ -3,8 +3,9 @@ ExtractTextPlugin = require "extract-text-webpack-plugin"
 
 
 # Stylus plugins
-nib     = require "nib"
-rupture = require "rupture"
+nib       = require "nib"
+rupture   = require "rupture"
+bootstrap = require "bootstrap-styl"
 
 
 backendConfig =
@@ -50,6 +51,7 @@ frontendConfig =
     use: [
       nib()
       rupture()
+      bootstrap()
     ]
   plugins: [
     new HotModuleReplacementPlugin()
