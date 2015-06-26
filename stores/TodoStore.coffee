@@ -39,6 +39,8 @@ TodoStore = assign {}, EventEmitter.prototype,
 
   addChangeListener: (callback) -> @on CHANGE_EVENT, callback
 
+  removeChangeListener: (callback) -> @removeListener CHANGE_EVENT, callback
+
 AppDispatcher.register (action) ->
 
   text = undefined
