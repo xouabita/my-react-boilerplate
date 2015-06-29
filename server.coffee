@@ -36,6 +36,8 @@ mongoose.connect 'mongodb://localhost/my_react_boilerplate'
 
 app.use '/static', express.static './__build__/public/'
 
+app.use '/api', require './api/index.coffee'
+
 # Routes managed by express and not by react-router
 app.post '/register', (req, res) ->
   User.register new User(username: req.body.username)
