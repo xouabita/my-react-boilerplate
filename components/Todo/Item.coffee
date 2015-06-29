@@ -17,4 +17,4 @@ module.exports = React.createClass
     </li>
 
   _onDestroy: ->
-    TodoActions.destroy @props.todo.id
+    TodoActions.destroy @props.todo._id

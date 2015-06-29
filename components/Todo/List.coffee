@@ -13,9 +13,11 @@ getTodoState = ->
 
 module.exports = React.createClass
 
-  getInitialState: -> getTodoState()
+  getInitialState: -> allTodos: {}
 
-  componentDidMount: -> TodoStore.addChangeListener @_onChange
+  componentWillMount: -> TodoStore.addChangeListener @_onChange
+
+  componentDidMount: -> TodoActions.getTodos()
 
   componentWillUnmount: -> TodoStore.removeChangeListener @_onChange
 

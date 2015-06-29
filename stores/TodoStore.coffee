@@ -7,14 +7,15 @@ TodoConstants = require '../constants/TodoConstants.coffee'
 
 _todos = {}
 
-create = (text) ->
-  id = (+ new Date() + Math.floor Math.random() * 999999).toString(36)
-  _todos[id] =
-    id: id
-    text: text
-    complete: no
+setTodos = (todos) ->
+  _todos = {}
+  _todos[todo._id] = todo for todo in todos
+
+create = (todo) ->
+  _todos[todo._id] = todo
 
 destroy = (id) ->
+  console.log id
   delete _todos[id]
 
 TodoStore = assign {}, EventEmitter.prototype,
@@ -33,11 +34,13 @@ AppDispatcher.register (action) ->
 
   switch action.actionType
 
+    when TodoConstants.TODO_RECEIVE
+      setTodos action.todos
+      TodoStore.emitChange()
+
     when TodoConstants.TODO_CREATE
-      text = action.text.trim()
-      if text isnt ''
-        create text
-        TodoStore.emitChange()
+      create action.todo
+      TodoStore.emitChange()
 
     when TodoConstants.TODO_DESTROY
       destroy action.id
