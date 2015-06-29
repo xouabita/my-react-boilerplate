@@ -22,7 +22,6 @@ TodoActions =
   destroy: (id) ->
     Api.delete "/api/todo/#{id}"
     .then ->
-      console.log "coucou"
       AppDispatcher.dispatch
         actionType: TodoConstants.TODO_DESTROY
         id: id

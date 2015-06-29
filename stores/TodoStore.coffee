@@ -15,7 +15,6 @@ create = (todo) ->
   _todos[todo._id] = todo
 
 destroy = (id) ->
-  console.log id
   delete _todos[id]
 
 TodoStore = assign {}, EventEmitter.prototype,
