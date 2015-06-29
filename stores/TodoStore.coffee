@@ -14,24 +14,10 @@ create = (text) ->
     text: text
     complete: no
 
-update = (id, updates) ->
-  _todos[id] = assign({}, _todos[id], updates)
-
-updateAll = (updates) ->
-  for id of _todos
-    update id, updates
-
 destroy = (id) ->
   delete _todos[id]
 
-destroyCompleted = () ->
-  destroy(id) for id of _todos when _todos[id].complete
-
 TodoStore = assign {}, EventEmitter.prototype,
-
-  areAllComplete: ->
-    return no for id of _todos when _todos[id].complete isnt yes
-    return yes
 
   getAll: -> _todos
 
