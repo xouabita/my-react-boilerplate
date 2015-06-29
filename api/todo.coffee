@@ -12,10 +12,11 @@ router.get '/', (req, res) ->
 
 router.post '/', (req, res) ->
   if not req.user then res.sendStatus 403
-  new Todo
+  todo = new Todo
     author: req.user.id
     text: req.body.text
-  .save()
+  todo.save()
+  res.json todo
 
 router.delete '/:id', (req, res) ->
   if not req.user then res.sendStatus 403
