@@ -5,6 +5,9 @@ passport     = require 'passport'
 bodyParser   = require 'body-parser'
 cookieParser = require 'cookie-parser'
 session      = require 'express-session'
+MongoStore   = require('connect-mongo')(session)
+
+mongoose.connect 'mongodb://localhost/my_react_boilerplate'
 
 # React stuff
 React  = require 'react'
@@ -21,7 +24,11 @@ app.set 'view engine', 'html'
 
 app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: yes
-app.use session secret: 'my react boilerplate'
+app.use session
+  secret: 'my react boilerplate'
+  store: new MongoStore mongooseConnection: mongoose.connection
+  saveUninitialized: no
+  resave: false
 app.use cookieParser()
 
 app.use passport.initialize()
@@ -31,8 +38,6 @@ User = require './models/User.coffee'
 passport.use new LocalStrategy(User.authenticate())
 passport.serializeUser User.serializeUser()
 passport.deserializeUser User.deserializeUser()
-
-mongoose.connect 'mongodb://localhost/my_react_boilerplate'
 
 app.use '/static', express.static './__build__/public/'
 
