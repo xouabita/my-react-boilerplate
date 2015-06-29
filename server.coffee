@@ -6,6 +6,7 @@ bodyParser   = require 'body-parser'
 cookieParser = require 'cookie-parser'
 session      = require 'express-session'
 MongoStore   = require('connect-mongo')(session)
+colors       = require 'colors'
 
 mongoose.connect 'mongodb://localhost/my_react_boilerplate'
 
@@ -73,4 +74,4 @@ app.use (req, res, next) ->
       state: JSON.stringify initialState
 
 app.listen 4242, ->
-  console.log "Your app is now running on port 4242"
+  console.log "\nYour app is now running on port 4242\n".rainbow
