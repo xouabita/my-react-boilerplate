@@ -2,10 +2,9 @@ React           = require 'react'
 Page            = require '../components/Page.coffee'
 Router          = require 'react-router'
 Bootstrap       = require 'react-bootstrap'
-RouterBootstrap = require 'react-router-bootstrap'
+NotLogged       = require "../components/NotLogged.coffee"
 
-{ Button     } = Bootstrap
-{ ButtonLink } = RouterBootstrap
+{ Button } = Bootstrap
 
 module.exports = React.createClass
   render: ->
@@ -16,7 +15,5 @@ module.exports = React.createClass
       </Page>
     else
       <Page>
-        <p>Seems like you are not login yet...</p>
-        <ButtonLink to="/login" bsStyle="success">Login</ButtonLink>
-        <ButtonLink to="/register" bsStyle="primary">Register</ButtonLink>
+        <NotLogged />
       </Page>

@@ -7,7 +7,11 @@ TodoList = require '../components/Todo/List.coffee'
 module.exports = React.createClass
 
   render: ->
-
-    <Page>
-      <TodoList />
-    </Page>
+    if @props.initialState.user
+      <Page>
+        <TodoList />
+      </Page>
+    else
+      <Page>
+        <NotLogged />
+      </Page>
