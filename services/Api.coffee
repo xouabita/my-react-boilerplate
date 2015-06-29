@@ -6,7 +6,7 @@ Api =
     new Promise (resolve, reject) ->
       request
         .get url
-        .end (res) ->
+        .end (err, res) ->
           reject() if res.status >= 400
           resolve JSON.parse res.text
 
@@ -16,16 +16,16 @@ Api =
         .post url
         .send data
         .set 'Content-Type', 'application/json'
-        .end (res) ->
+        .end (err, res) ->
           reject() if res.status >= 400
-          resolve()
+          resolve JSON.parse res.text
 
   delete: (url) ->
     new Promise (resolve, reject) ->
       request
-        .delete url
-        .end (res) ->
-          reject() if res.status >= 400
+        .del url
+        .end (err, res) ->
+          reject() if err or res.status >= 400
           resolve()
 
 module.exports = Api
