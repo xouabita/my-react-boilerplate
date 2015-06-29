@@ -3,3 +3,4 @@ node_modules
 __build__/
 .DS_Store
 .swo
+*.swn
