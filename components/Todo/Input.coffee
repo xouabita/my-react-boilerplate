@@ -24,6 +24,7 @@ module.exports = React.createClass
       onBlur={this._save}
       onChange={this._onChange}
       onKeyDown={this._onKeyDown}
+      value={@state.value}
     />
 
   _save: ->
